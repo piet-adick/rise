@@ -49,7 +49,7 @@ object primitives {
   }
 
   @primitive case class OclReduceSeq()(override val t: Type = TypePlaceholder)
-      extends Primitive {
+    extends Primitive {
     override def typeScheme: Type =
       aFunT(a =>
         implN(n =>
