@@ -35,4 +35,5 @@ object DSL {
     def apply(dim: Char): Expr = MapLane(dim)()
   }
 
+  def shflWarp: ShflWarp = ShflWarp()()
 }

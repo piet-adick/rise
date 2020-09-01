@@ -5,7 +5,6 @@ import rise.core.TypeLevelDSL._
 import rise.core.types._
 
 object primitives {
-
   sealed trait Primitive extends rise.core.Primitive
 
   protected def mapTypeScheme: Type =
@@ -38,6 +37,16 @@ object primitives {
   @primitive case class MapLane(dim: Char)(override val t: Type = TypePlaceholder)
     extends Primitive {
     override def typeScheme: Type = mapTypeScheme
+  }
+
+  @primitive case class ShflWarp()(override val t: Type = TypePlaceholder)
+    extends Primitive {
+    private val warpSize = 32
+
+    override def typeScheme: Type =
+      implDT(dt =>
+        ArrayType(warpSize, IndexType(warpSize)) ->:
+          ArrayType(warpSize, dt) ->: ArrayType(warpSize, dt))
   }
 
 }
