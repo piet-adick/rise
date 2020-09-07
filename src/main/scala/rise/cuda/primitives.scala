@@ -1,6 +1,7 @@
 package rise.cuda
 
 import primitiveMacro.Primitive.primitive
+import rise.core.Nat
 import rise.core.TypeLevelDSL._
 import rise.core.types._
 
@@ -46,7 +47,20 @@ object primitives {
     override def typeScheme: Type =
       implDT(dt =>
         ArrayType(warpSize, IndexType(warpSize)) ->:
-          ArrayType(warpSize, dt) ->: ArrayType(warpSize, dt))
+        ArrayType(warpSize, dt) ->:
+        ArrayType(warpSize, dt)
+      )
+  }
+
+  @primitive case class ShflDownWarp(delta: Nat)(override val t: Type = TypePlaceholder)
+    extends Primitive {
+    private val warpSize = 32
+
+    override def typeScheme: Type =
+      implDT(dt =>
+        ArrayType(warpSize, dt) ->:
+        ArrayType(warpSize, dt)
+      )
   }
 
 }

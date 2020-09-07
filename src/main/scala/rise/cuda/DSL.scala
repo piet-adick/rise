@@ -36,4 +36,8 @@ object DSL {
   }
 
   def shflWarp: ShflWarp = ShflWarp()()
+
+  object shflDownWarp {
+    def apply(delta: Nat): ShflDownWarp = ShflDownWarp(delta)()
+  }
 }
