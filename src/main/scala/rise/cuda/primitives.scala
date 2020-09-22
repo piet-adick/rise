@@ -57,9 +57,10 @@ object primitives {
 
     override def typeScheme: Type =
       implST(dt =>
-        NatType ->:
-        ArrayType(warpSize, dt) ->:
-        ArrayType(warpSize, dt)
+        nFunT(n =>
+          ArrayType(warpSize, dt) ->:
+            ArrayType(warpSize, dt)
+        )
       )
   }
 
