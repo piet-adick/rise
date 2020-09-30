@@ -64,4 +64,30 @@ object primitives {
       )
   }
 
+  @primitive case class ShflUpWarp()(override val t: Type = TypePlaceholder)
+    extends Primitive {
+    private val warpSize = 32
+
+    override def typeScheme: Type =
+      implST(dt =>
+        nFunT(n =>
+          ArrayType(warpSize, dt) ->:
+            ArrayType(warpSize, dt)
+        )
+      )
+  }
+
+  @primitive case class ShflXorWarp()(override val t: Type = TypePlaceholder)
+    extends Primitive {
+    private val warpSize = 32
+
+    override def typeScheme: Type =
+      implST(dt =>
+        nFunT(n =>
+          ArrayType(warpSize, dt) ->:
+            ArrayType(warpSize, dt)
+        )
+      )
+  }
+
 }

@@ -37,5 +37,7 @@ object DSL {
 
   def shflWarp: ShflWarp = ShflWarp()()
   def shflDownWarp: ShflDownWarp = ShflDownWarp()()
+  def shflUpWarp: ShflUpWarp = ShflUpWarp()()
+  def shflXorWarp: ShflXorWarp = ShflXorWarp()()
 
 }
